@@ -1,0 +1,30 @@
+{
+  "name": "Team-Express-17-NodeJS",
+  "version": "1.0.0",
+  "description": "Node.JS application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CosmicEon/Team-Express-17-NodeJS.git"
+  },
+  "keywords": [],
+  "author": "Krasen Ilkov",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "connect-mongo": "^1.3.2",
+    "cookie-parser": "^1.4.3",
+    "eslint-config-google": "^0.9.1",
+    "express": "^4.15.3",
+    "gulp": "^3.9.1",
+    "mongodb": "^2.2.30",
+    "pug": "^2.0.0-rc.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2"
+  }
+}
