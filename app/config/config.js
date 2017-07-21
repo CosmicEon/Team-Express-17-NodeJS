@@ -11,8 +11,9 @@ const applyTo = (app) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    const libsPath = path.join(__dirname, '../../node_modules/');
-    app.use('/libs', express.static(libsPath));
+    // const libsPath = path.join(__dirname, '../../node_modules/');
+    // app.use('/libs', express.static(libsPath));
+    app.use(express.static(path.join(__dirname, '../../node_modules/')));
 
     const staticsPath = path.join(__dirname, '../../public');
     app.use('/public', express.static(staticsPath));
