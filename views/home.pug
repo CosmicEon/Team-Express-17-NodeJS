@@ -48,6 +48,30 @@ html(lang="en")
             // /.container-fluid
 
         block mainContent
-        h1 I am Home Welcome
+
+        main.container-fluid
+            .row
+            .page-header
+                h1.text-center Website's header
+                    small Subtext for header
+
+            .row
+                .col-md-2.col-sm-2.text-center
+                    .row
+                        h1 Topics
+                    .row
+                        .topics
+                .col-md-8.col-sm-8.text-center
+                    p Main Content
+                .col-md-2.col-sm-2.text-center
+                    h2 Ads
+
+
+
+            form(action='/auth/sign-in', method="POST")
+                input.form-control(type="text" name="username" placeholder="Enter username")
+                input.form-control(type="password" name="password" placeholder="Enter password")
+                button.btn.btn-success
+                    | Sign In
 
         .container

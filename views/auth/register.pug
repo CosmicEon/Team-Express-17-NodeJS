@@ -1,0 +1,14 @@
+form(action='/auth/register', method="POST")
+    input.form-control(type="text" name="username" placeholder="Enter username")
+    input.form-control(type="password" name="password" placeholder="Enter password")
+    button.btn.btn-success
+        | Sign Up
+
+form.form-inline
+    .form-group
+        label(for='exampleInputName2') Name
+        input#exampleInputName2.form-control(type='text', placeholder='Jane Doe')
+    .form-group
+        label(for='exampleInputEmail2') Email
+        input#exampleInputEmail2.form-control(type='email', placeholder='jane.doe@example.com')
+    button.btn.btn-default(type='submit') Send invitation

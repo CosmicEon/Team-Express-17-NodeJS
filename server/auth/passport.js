@@ -3,7 +3,7 @@ const passport = require('passport');
 const { Strategy } = require('passport-local');
 const MongoStore = require('connect-mongo')(session);
 
-const config = require('../../config');
+const config = require('../../config/config');
 
 const applyTo = (app, data) => {
     passport.use(new Strategy((username, password, done) => {
@@ -20,8 +20,8 @@ const applyTo = (app, data) => {
     }));
 
     app.use(session({
-        store: new MongoStore({ url: config.connectionString }),
-        secret: config.sessionSecret,
+        store: new MongoStore({ url: config.mongo.url }),
+        secret: config.passport.secret,
         resave: true,
         saveUninitialized: true,
     }));
