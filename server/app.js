@@ -14,15 +14,12 @@ const init = (data) => {
     app.use(bodyParser.urlencoded({ extended: true }));
 
     // Static libs
-    app.use(express.static(path.join(__dirname, '../../node_modules/')));
-    app.use(express.static(path.join(__dirname, '../../public')));
-
-    // const staticsPath = path.join(__dirname, '../../public');
-    // app.use('/public', express.static(staticsPath));
+    app.use(express.static(path.join(__dirname, '../../public/')));
+    app.use('/public', express.static('public'));
 
     app.use(cookieParser('keyboard cat'));
-    // require('./config').applyTo(app);
-    // require('./auth').applyTo(app, data);
+
+     require('./auth/passport').applyTo(app, data);
 
     // app.use(require('connect-flash')());
     // app.use((req, res, next) => {
@@ -30,7 +27,7 @@ const init = (data) => {
     //     next();
     // });
 
-    require('./routers')
+    require('./routers/routers')
         .attachTo(app, data);
 
     return Promise.resolve(app);

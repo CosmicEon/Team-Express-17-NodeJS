@@ -6,49 +6,47 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title Forum
-        link(rel="stylesheet", type="text/css", href="/node_modules/bootstrap/dist/css/bootstrap.min.css")
-        script(type="text/jscript", src='/node_modules/jquery/dist/jquery.js')
-        link(rel="stylesheet", type="text/css", href="/static/css/main.css")
+        link(rel="stylesheet", href="/public/css/bootstrap.min.css")
+        link(rel="stylesheet", href="/public/css/bootstrap-datepicker.min.css")
+        link(rel="stylesheet", href="/public/css/main.css")
+
+        block styles
+
+        script(src="/public/js/jquery.min.js")
+        script(src="/public/js/bootstrap.min.js")
+        script(src="/public/js/bootstrap-datepicker.min.js")
+
+        block scripts
 
     body
         // main content
-        nav.nav
-            ul.list.list-horizontal
-                li.list-item
-                    a.nav-btn(href="/") Home
-                li.list-item.dropdown
-                    a.nav-btn.dropdown-toggle#nav-btn-toggle-items(href="#") Items
-                    ul.dropdown-list.list
-                        li.list-item
-                            a.nav-btn#nav-btn-item-all(href="/items") All items
-                        li.list-item
-                            a.nav-btn#nav-btn-item-add(href="/items/form") Add item
+        nav.navbar.navbar-default
+            .container-fluid
+                // Brand and toggle get grouped for better mobile display
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='/') Home
+                // Collect the nav links, forms, and other content for toggling
+                #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href='#') Discover Topics
+                        li
+                            a(href='#') Active Topics
+                        li
+                            a(href='#') Profile
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href='#') Register
+                        li
+                            a(href='#') Log In
+                // /.navbar-collapse
+            // /.container-fluid
 
-                li.list-item.dropdown
-                    a.nav-btn.dropdown-toggle#nav-btn-toggle-items(href="#") Todos
-                    ul.dropdown-list.list
-                        li.list-item
-                            a.nav-btn#nav-btn-item-all(href="/todos") All Todos
-                        li.list-item
-                            a.nav-btn#nav-btn-item-add(href="/todos/form") Add Todo
-
-                if user
-                    li.list-item.dropdown
-                        a.nav-btn.dropdown-toggle#nav-btn-toggle-items(href="#")
-                            =user.username
-                        ul.dropdown-list.list
-                            li.list-item
-                                form(action="/auth/sign-out" method="post")
-                                    button.nav-btn sign-out
-                else
-                    li.list-item.dropdown
-                        a.nav-btn.dropdown-toggle#nav-btn-toggle-items(href="#") User
-                        ul.dropdown-list.list
-                            li.list-item
-                                a.nav-btn#nav-btn-item-all(href="/auth/sign-up") Sign Up
-                            li.list-item
-                                a.nav-btn#nav-btn-item-add(href="/auth/sign-in")
-                                    | Sign In
         block mainContent
         h1 I am Home Welcome
 
