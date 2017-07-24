@@ -1,77 +1,55 @@
-<!DOCTYPE html>
-html(lang="en")
+extends _shared/_main.pug
 
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title Forum
-        link(rel="stylesheet", href="/public/css/bootstrap.min.css")
-        link(rel="stylesheet", href="/public/css/bootstrap-datepicker.min.css")
-        link(rel="stylesheet", href="/public/css/main.css")
-
-        block styles
-
-        script(src="/public/js/jquery.min.js")
-        script(src="/public/js/bootstrap.min.js")
-        script(src="/public/js/bootstrap-datepicker.min.js")
-
-        block scripts
-
-    body
-        // main content
-        nav.navbar.navbar-default
-            .container-fluid
-                // Brand and toggle get grouped for better mobile display
-                .navbar-header
-                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
-                        span.sr-only Toggle navigation
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a.navbar-brand(href='/') Home
-                // Collect the nav links, forms, and other content for toggling
-                #bs-example-navbar-collapse-1.collapse.navbar-collapse
-                    ul.nav.navbar-nav
+block centerContent
+    .col-sm-8.col-md-8.text-center
+        h2 Recently added
+        .row
+            .col-sm-12.col-md-12
+                .thumbnail
+                    img(src='...', alt='...')
+                    .caption
+                        h3 Thumbnail label
+                        p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                        p
+                            a.btn.btn-primary(href='#', role='button') Coment
+                            a.btn.btn-default(href='#', role='button') Hide
+        .row
+            .col-sm-12.col-md-12
+                .thumbnail
+                    img(src='...', alt='...')
+                    .caption
+                        h3 Thumbnail label
+                        p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                        p
+                            a.btn.btn-primary(href='#', role='button') Coment
+                            a.btn.btn-default(href='#', role='button') Hide
+        .row
+            .col-sm-12.col-md-12
+                .thumbnail
+                    img(src='...', alt='...')
+                    .caption
+                        h3 Thumbnail label
+                        p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                        p
+                            a.btn.btn-primary(href='#', role='button') Coment
+                            a.btn.btn-default(href='#', role='button') Hide
+        .row
+            .col-sm-12.col-md-12
+                nav(aria-label='Page navigation')
+                    ul.pagination
                         li
-                            a(href='#') Discover Topics
+                            a(href='#', aria-label='Previous')
+                                span(aria-hidden='true') «
                         li
-                            a(href='#') Active Topics
+                            a(href='#') 1
                         li
-                            a(href='#') Profile
-                    ul.nav.navbar-nav.navbar-right
+                            a(href='#') 2
                         li
-                            a(href='#') Register
+                            a(href='#') 3
                         li
-                            a(href='#') Log In
-                // /.navbar-collapse
-            // /.container-fluid
-
-        block mainContent
-
-        main.container-fluid
-            .row
-            .page-header
-                h1.text-center Website's header
-                    small Subtext for header
-
-            .row
-                .col-md-2.col-sm-2.text-center
-                    .row
-                        h1 Topics
-                    .row
-                        .topics
-                .col-md-8.col-sm-8.text-center
-                    p Main Content
-                .col-md-2.col-sm-2.text-center
-                    h2 Ads
-
-
-
-            form(action='/auth/sign-in', method="POST")
-                input.form-control(type="text" name="username" placeholder="Enter username")
-                input.form-control(type="password" name="password" placeholder="Enter password")
-                button.btn.btn-success
-                    | Sign In
-
-        .container
+                            a(href='#') 4
+                        li
+                            a(href='#') 5
+                        li
+                            a(href='#', aria-label='Next')
+                                span(aria-hidden='true') »

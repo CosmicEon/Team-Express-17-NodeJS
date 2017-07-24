@@ -1,12 +1,12 @@
 const session = require('express-session');
 const passport = require('passport');
-const { Strategy } = require('passport-local');
+const LocalStrategy = require('passport-local');
 const MongoStore = require('connect-mongo')(session);
 
 const config = require('../../config/config');
 
 const applyTo = (app, data) => {
-    passport.use(new Strategy((username, password, done) => {
+    passport.use(new LocalStrategy((username, password, done) => {
         data.users.checkPassword(username, password)
             .then(() => {
                 return data.users.findByUsername(username);
@@ -26,8 +26,6 @@ const applyTo = (app, data) => {
         saveUninitialized: true,
     }));
 
-    app.use(passport.initialize());
-    app.use(passport.session());
 
     passport.serializeUser((user, done) => {
         done(null, user._id);
@@ -39,6 +37,8 @@ const applyTo = (app, data) => {
                 done(null, user);
             }).catch(done);
     });
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     app.use((req, res, next) => {
         res.locals = {

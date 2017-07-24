@@ -1,20 +1,20 @@
-class TodosController {
+class AuthController {
     constructor(data) {
         this.data = data;
     }
 
-    getSignUpForm(req, res) {
+    getRegisterForm(req, res) {
         return res.render('auth/register');
     }
-    getSignInForm(req, res) {
-        return res.render('auth/sign-in');
+    getLoginForm(req, res) {
+        return res.render('auth/login');
     }
-    signOut(req, res) {
+    logout(req, res) {
         req.logout();
         return res.redirect('/');
     }
 
-    signUp(req, res) {
+    register(req, res) {
         const bodyUser = req.body;
 
         this.data.users.findByUsername(bodyUser.username)
@@ -26,16 +26,16 @@ class TodosController {
                 return this.data.users.create(bodyUser);
             })
             .then((dbUser) => {
-                return res.redirect('/auth/sign-in');
+                return res.redirect('/auth/login');
             })
             .catch((err) => {
-                req.flash('error', err);
+                throw new Error(`Error occurred: ${err}`);
             });
     }
 }
 
 const init = (data) => {
-    return new TodosController(data);
+    return new AuthController(data);
 };
 
 module.exports = { init };

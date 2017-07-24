@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+html(lang="en")
+
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Forum
+        link(rel="stylesheet", href="/public/css/bootstrap.min.css")
+        //- link(rel="stylesheet", href="/public/css/bootstrap-datepicker.min.css")
+        link(rel="stylesheet", href="/public/css/main.css")
+
+        block styles
+
+        script(type="text/javascript", src="/public/js/jquery.min.js")
+        script(type="text/javascript", src="/public/js/bootstrap.min.js")
+        //- script(src="/public/js/bootstrap-datepicker.min.js")
+
+        block scripts
+
+    body
+        nav.navbar.navbar-default
+            .container-fluid
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='/') Home
+                #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href='/topics/search') Discover Topics
+                        li
+                            a(href='/topics/active') Active Topics
+                        li
+                            a(href='/profile') Profile
+                    //- navTop
+                    block navTop
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href='/auth/register') Register
+                        li
+                            a(href='/auth/login') Login
+
+        //- main
+        block main
+            main.container-fluid
+                .row
+                    .page-header
+                        h1.text-center Website's header
+                            small motto here
+                .row
+                    //- left
+                    .col-sm-2.col-md-2.text-center
+                        .row
+                            include ../nav/left.pug
+
+                    //- center
+                    block centerContent
+
+                    //- right
+                    .col-sm-2.col-md-2.text-center
+                        aside
+                            h2 Ads
+        //- footer
+        block footer
+
+        script(type="text/javascript", src="/public/js/main.js")

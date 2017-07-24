@@ -6,21 +6,21 @@ const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
 
     router
-        .get('/sign-up', (req, res) => {
-            return controller.getSignUpForm(req, res);
+        .get('/register', (req, res) => {
+            return controller.getRegisterForm(req, res);
         })
-        .get('/sign-in', (req, res) => {
-            return controller.getSignInForm(req, res);
+        .get('/login', (req, res) => {
+            return controller.getLoginForm(req, res);
         })
-        .post('/sign-out', (req, res) => {
-            return controller.signOut(req, res);
+        .post('/logout', (req, res) => {
+            return controller.logout(req, res);
         })
-        .post('/sign-up', (req, res) => {
-            return controller.signUp(req, res);
+        .post('/register', (req, res) => {
+            return controller.register(req, res);
         })
-        .post('/sign-in', passport.authenticate('local', {
+        .post('/login', passport.authenticate('local', {
             successRedirect: '/',
-            failureRedirect: '/auth/sign-in',
+            failureRedirect: '/auth/login',
             failureFlash: true,
         }));
 
