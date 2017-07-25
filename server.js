@@ -2,11 +2,11 @@ const async = () => {
     return Promise.resolve();
 };
 
-const config = require('./config/config');
+const config = require('./server/config/config');
 
 async()
-    .then(() => require('./db/db').init(config.mongo.url))
-    .then((db) => require('./data/data').init(db))
+    .then(() => require('./database/database').init(config.mongo.url))
+    .then((db) => require('./server/data/data').init(db))
     .then((data) => require('./server/app').init(data))
     .then((app) => {
         app.listen(config.server.port, () =>

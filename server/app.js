@@ -10,16 +10,21 @@ const init = (data) => {
     const app = express();
 
     app.set('view engine', 'pug');
+    app.set('views', path.join(__dirname, './views/'));
+
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
     // Static libs
     app.use(express.static(path.join(__dirname, '../../public/')));
-    app.use('/public', express.static('public'));
+    app.use('/static', express.static('public'));
+    // app.use('/static', express.static(path.join(__dirname, '../../public')));
 
+
+    // app.use('/static', express.static('public'));
     app.use(cookieParser('keyboard cat'));
 
-     require('./auth/passport').applyTo(app, data);
+    require('./config/passport').applyTo(app, data);
 
     // app.use(require('connect-flash')());
     // app.use((req, res, next) => {
