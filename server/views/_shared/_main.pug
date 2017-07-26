@@ -39,11 +39,14 @@ html(lang="en")
                     //- navTop
                     block navTop
                     ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href='/auth/register') Register
-                        li
-                            a(href='/auth/login') Login
-
+                        if user
+                            li
+                                a(href='/users/logout') Logout
+                        else
+                            li
+                                a(href='/users/register') Register
+                            li
+                                a(href='/users/login') Login
         //- main
         block main
             main.container-fluid

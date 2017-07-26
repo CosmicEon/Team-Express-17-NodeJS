@@ -5,7 +5,7 @@ const config = {
         port: process.env.PORT || 8080,
     },
     mongo: {
-        url: process.env.MONGO_DB_URI || 'mongodb://localhost/data',
+        url: process.env.MONGO_DB_URI || 'mongodb://localhost/forum',
     },
     passport: {
         secret: 'hidden key',

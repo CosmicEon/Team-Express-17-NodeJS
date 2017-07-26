@@ -1,9 +1,14 @@
-const BaseData = require('./base/base.data');
-const User = require('../models/user.model');
+class UsersData {
+    constructor(db, ModelClass) {
+        this.db = db;
+        this.ModelClass = ModelClass;
+        this.collectionName = this._getCollectionName();
+        this.collection = this.db.collection(this.collectionName);
+    }
 
-class UserData extends BaseData {
-    constructor(db) {
-        super(db, User, User);
+    filterBy(props) {
+        return this.collection.find(props)
+            .toArray();
     }
 
     findByUsername(username) {
@@ -26,6 +31,10 @@ class UserData extends BaseData {
                 return true;
             });
     }
+
+    _getCollectionName() {
+        return this.ModelClass.name.toLowerCase() + 's';
+    }
 }
 
-module.exports = UserData;
+module.exports = UsersData;

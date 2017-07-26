@@ -1,9 +1,13 @@
-const UserData = require('./user.data');
+const UsersData = require('./users.data');
+const User = require('../models/user.model');
+const Publications = require('./publications.data');
+const Publication = require('../models/publication.model');
 
 const init = (db) => {
     return Promise.resolve({
-        // insert all data models here
-        users: new UserData(db),
+        // insert data models here
+        users: new UsersData(db, User),
+        publications: new Publications(db, Publication),
     });
 };
 

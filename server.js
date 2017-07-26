@@ -1,10 +1,10 @@
-const async = () => {
+const config = require('./server/config/config');
+
+const asyncServerBoot = () => {
     return Promise.resolve();
 };
 
-const config = require('./server/config/config');
-
-async()
+asyncServerBoot()
     .then(() => require('./database/database').init(config.mongo.url))
     .then((db) => require('./server/data/data').init(db))
     .then((data) => require('./server/app').init(data))

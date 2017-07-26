@@ -1,12 +1,21 @@
 const { ObjectID } = require('mongodb');
 
-class BaseMongoDBData {
-    constructor(db, ModelClass, validator) {
+class Publications {
+    constructor(db, ModelClass) {
         this.db = db;
         this.ModelClass = ModelClass;
-        this.validator = validator;
         this.collectionName = this._getCollectionName();
         this.collection = this.db.collection(this.collectionName);
+    }
+
+    create(model) {
+        if (!this._isModelValid(model)) {
+            return Promise.reject('Validation failed!');
+        }
+        return this.collection.insert(model)
+            .then(() => {
+                return model;
+            });
     }
 
     filterBy(props) {
@@ -28,15 +37,6 @@ class BaseMongoDBData {
             });
     }
 
-    create(model) {
-        if (!this._isModelValid(model)) {
-            return Promise.reject('Validation failed!');
-        }
-        return this.collection.insert(model)
-            .then(() => {
-                return model;
-            });
-    }
 
     findById(id) {
         return this.collection.findOne({
@@ -59,12 +59,6 @@ class BaseMongoDBData {
             });
     }
 
-    updateById(model) {
-        return this.collection.updateOne({
-            _id: model._id,
-        }, model);
-    }
-
     _isModelValid(model) {
         if ('undefined' === typeof this.validator ||
             'function' !== typeof this.validator.isValid) {
@@ -79,5 +73,4 @@ class BaseMongoDBData {
     }
 }
 
-module.exports = BaseMongoDBData;
-
+module.exports = Publications;

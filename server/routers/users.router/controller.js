@@ -4,10 +4,10 @@ class AuthController {
     }
 
     getRegisterForm(req, res) {
-        return res.render('auth/register');
+        return res.render('users/register');
     }
     getLoginForm(req, res) {
-        return res.render('auth/login');
+        return res.render('users/login');
     }
     logout(req, res) {
         req.logout();
@@ -26,7 +26,7 @@ class AuthController {
                 return this.data.users.create(bodyUser);
             })
             .then((dbUser) => {
-                return res.redirect('/auth/login');
+                return res.redirect('/users/login');
             })
             .catch((err) => {
                 throw new Error(`Error occurred: ${err}`);

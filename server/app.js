@@ -18,10 +18,7 @@ const init = (data) => {
     // Static libs
     app.use(express.static(path.join(__dirname, '../../public/')));
     app.use('/static', express.static('public'));
-    // app.use('/static', express.static(path.join(__dirname, '../../public')));
 
-
-    // app.use('/static', express.static('public'));
     app.use(cookieParser('keyboard cat'));
 
     require('./config/passport').applyTo(app, data);

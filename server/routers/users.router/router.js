@@ -16,15 +16,15 @@ const attachTo = (app, data) => {
             return controller.logout(req, res);
         })
         .post('/register', (req, res) => {
-            return controller.register(req, res);
+            return controller.register(req, res).redirect('/profiles');
         })
         .post('/login', passport.authenticate('local', {
-            successRedirect: '/',
-            failureRedirect: '/auth/login',
+            successRedirect: '/profile',
+            failureRedirect: '/login',
             failureFlash: true,
         }));
 
-    app.use('/auth', router);
+    app.use('/users', router);
 };
 
 module.exports = { attachTo };

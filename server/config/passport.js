@@ -40,13 +40,13 @@ const applyTo = (app, data) => {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.use((req, res, next) => {
-        res.locals = {
-            user: req.user,
-        };
+    // app.use((req, res, next) => {
+    //     res.locals = {
+    //         user: req.user,
+    //     };
 
-        next();
-    });
+    //     next();
+    // });
 };
 
 module.exports = { applyTo };
