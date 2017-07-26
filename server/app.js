@@ -2,7 +2,7 @@
 
 const express = require('express');
 const path = require('path');
-
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
@@ -12,14 +12,15 @@ const init = (data) => {
     app.set('view engine', 'pug');
     app.set('views', path.join(__dirname, './views/'));
 
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true }));
-
     // Static libs
     app.use(express.static(path.join(__dirname, '../../public/')));
     app.use('/static', express.static('public'));
 
-    app.use(cookieParser('keyboard cat'));
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+
+    app.use(cookieParser());
+    app.use(session({ secret: "TeamFreedom Secretirino Yo", saveUninitialized: true, resave: true })); // !
 
     require('./config/passport').applyTo(app, data);
 
@@ -29,8 +30,7 @@ const init = (data) => {
     //     next();
     // });
 
-    require('./routers/routers')
-        .attachTo(app, data);
+    require('./routers/routers').attachTo(app, data);
 
     return Promise.resolve(app);
 };

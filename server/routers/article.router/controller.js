@@ -1,4 +1,4 @@
-class AuthController {
+class ArticleController {
     constructor(data) {
         this.data = data;
     }
@@ -37,7 +37,7 @@ class AuthController {
 }
 
 const init = (data) => {
-    return new AuthController(data);
+    return new ArticleController(data);
 };
 
 module.exports = { init };

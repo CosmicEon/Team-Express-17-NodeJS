@@ -6,6 +6,9 @@ const MongoStore = require('connect-mongo')(session);
 const config = require('./config');
 
 const applyTo = (app, data) => {
+    app.use(passport.initialize());
+    app.use(passport.session());
+
     passport.use(new LocalStrategy((username, password, done) => {
         data.users.checkPassword(username, password)
             .then(() => {
@@ -19,12 +22,12 @@ const applyTo = (app, data) => {
             });
     }));
 
-    app.use(session({
-        store: new MongoStore({ url: config.mongo.url }),
-        secret: config.passport.secret,
-        resave: true,
-        saveUninitialized: true,
-    }));
+    // app.use(session({
+    //     store: new MongoStore({ url: config.mongo.url }),
+    //     secret: config.passport.secret,
+    //     saveUninitialized: true,
+    //     resave: true,
+    // }));
 
 
     passport.serializeUser((user, done) => {
@@ -37,8 +40,13 @@ const applyTo = (app, data) => {
                 done(null, user);
             }).catch(done);
     });
-    app.use(passport.initialize());
-    app.use(passport.session());
+
+    passport.isAuthenticated = (req, res, next) => {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+        res.redirect('/login' + res._id);
+    };
 
     // app.use((req, res, next) => {
     //     res.locals = {

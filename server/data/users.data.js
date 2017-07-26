@@ -1,9 +1,28 @@
+const { ObjectID } = require('mongodb');
+
 class UsersData {
     constructor(db, ModelClass) {
         this.db = db;
         this.ModelClass = ModelClass;
         this.collectionName = this._getCollectionName();
         this.collection = this.db.collection(this.collectionName);
+    }
+
+    create(model) {
+        if (!this._isModelValid(model)) {
+            return Promise.reject('Validation failed!');
+        }
+
+        return this.collection.insert(model)
+            .then(() => {
+                return model;
+            });
+    }
+
+    findById(id) {
+        return this.collection.findOne({
+            _id: new ObjectID(id),
+        });
     }
 
     filterBy(props) {
@@ -30,6 +49,15 @@ class UsersData {
 
                 return true;
             });
+    }
+
+    _isModelValid(model) {
+        if ('undefined' === typeof this.validator ||
+            'function' !== typeof this.validator.isValid) {
+            return true;
+        }
+
+        return this.validator.isValid(model);
     }
 
     _getCollectionName() {

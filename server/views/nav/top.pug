@@ -1,4 +1,12 @@
 extends ../_shared/_main.pug
 
 block navTop
-    h1 Topics
+  ul.nav.navbar-nav.navbar-right
+    if user
+        li
+            a(href='/users/logout') Logout
+    else
+        li
+            a(href='/users/register') Register
+        li
+            a(href='/users/login') Login

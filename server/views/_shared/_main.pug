@@ -38,11 +38,7 @@ html(lang="en")
                             a(href='/profile') Profile
                     //- navTop
                     block navTop
-                    ul.nav.navbar-nav.navbar-right
-                        if user
-                            li
-                                a(href='/users/logout') Logout
-                        else
+                        ul.nav.navbar-nav.navbar-right
                             li
                                 a(href='/users/register') Register
                             li
@@ -54,6 +50,11 @@ html(lang="en")
                     .page-header
                         h1.text-center Website's header
                             small motto here
+                    //- .container
+                    //-     != messages('_message', locals)
+                    //-     if errors
+                    //-         each error, i in errors
+                    //-             div(class="alert alert-danger") #{error.msg}
                 .row
                     //- left
                     .col-sm-2.col-md-2.text-center

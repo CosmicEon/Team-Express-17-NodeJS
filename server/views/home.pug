@@ -53,3 +53,14 @@ block centerContent
                         li
                             a(href='#', aria-label='Next')
                                 span(aria-hidden='true') »
+
+block navTop
+    ul.nav.navbar-nav.navbar-right
+        if user
+            li
+                a(href='/users/logout') Logout
+        else
+            li
+                a(href='/users/register') Register
+            li
+                a(href='/users/login') Login

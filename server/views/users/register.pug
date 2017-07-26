@@ -2,11 +2,11 @@ extends ../_shared/_main.pug
 
 block centerContent
     .col-sm-8.col-md-8.text-center
-        form(action='/users/register', method="POST")
+        form(action='/users/register', method='POST')
             .form-group
                 label(for='registerName') Name
-                input#registerName.form-control(type='text', placeholder='Enter Username')
+                input#registerName.form-control(type='text', name='username', placeholder='Enter Username')
             .form-group
                 label(for='registerPassword') Password
-                input#registerPassword.form-control(type="password" name="password" placeholder="Enter Password")
+                input#registerPassword.form-control(type='password', name='password', placeholder='Enter Password')
             button.btn.btn-default(type='submit') Register

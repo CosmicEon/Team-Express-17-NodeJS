@@ -1,6 +1,6 @@
 const { ObjectID } = require('mongodb');
 
-class Publications {
+class Articles {
     constructor(db, ModelClass) {
         this.db = db;
         this.ModelClass = ModelClass;
@@ -73,4 +73,4 @@ class Publications {
     }
 }
 
-module.exports = Publications;
+module.exports = Articles;
