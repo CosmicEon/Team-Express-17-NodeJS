@@ -7,7 +7,12 @@ const path = require('path');
 const attachTo = (app, data) => {
     // Home route
     app.get('/', (req, res) => {
-        return res.render('home');
+        return data.articles.getArticles(1)
+            .then((item) => {
+                return res.render('home', {
+                    article: item,
+                });
+            });
     });
 
     // Other routes

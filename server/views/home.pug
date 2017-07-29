@@ -1,38 +1,17 @@
 extends _shared/_main.pug
 
 block centerContent
-    .col-sm-8.col-md-8.text-center
+    #recent.col-sm-8.col-md-8.text-center
         h2 Recently added
         .row
             .col-sm-12.col-md-12
                 .thumbnail
-                    img(src='...', alt='...')
                     .caption
-                        h3 Thumbnail label
-                        p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                        h3= article[0].title
+                        p= article[0].body
                         p
                             a.btn.btn-primary(href='#', role='button') Coment
-                            a.btn.btn-default(href='#', role='button') Hide
-        .row
-            .col-sm-12.col-md-12
-                .thumbnail
-                    img(src='...', alt='...')
-                    .caption
-                        h3 Thumbnail label
-                        p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                        p
-                            a.btn.btn-primary(href='#', role='button') Coment
-                            a.btn.btn-default(href='#', role='button') Hide
-        .row
-            .col-sm-12.col-md-12
-                .thumbnail
-                    img(src='...', alt='...')
-                    .caption
-                        h3 Thumbnail label
-                        p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                        p
-                            a.btn.btn-primary(href='#', role='button') Coment
-                            a.btn.btn-default(href='#', role='button') Hide
+
         .row
             .col-sm-12.col-md-12
                 nav(aria-label='Page navigation')
@@ -53,14 +32,3 @@ block centerContent
                         li
                             a(href='#', aria-label='Next')
                                 span(aria-hidden='true') »
-
-block navTop
-    ul.nav.navbar-nav.navbar-right
-        if user
-            li
-                a(href='/users/logout') Logout
-        else
-            li
-                a(href='/users/register') Register
-            li
-                a(href='/users/login') Login

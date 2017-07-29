@@ -1,8 +1,7 @@
-extends ../_shared/_main.pug
-
-block navTop
-  ul.nav.navbar-nav.navbar-right
-    if user
+ul.nav.navbar-nav.navbar-right
+    if users
+        li
+            a(href='/profile') Profile
         li
             a(href='/users/logout') Logout
     else

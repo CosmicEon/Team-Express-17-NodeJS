@@ -1,4 +1,4 @@
-const config = require('./server/config/config');
+const config = require('./config/config');
 
 const asyncServerBoot = () => {
     return Promise.resolve();

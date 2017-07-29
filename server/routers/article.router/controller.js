@@ -3,36 +3,55 @@ class ArticleController {
         this.data = data;
     }
 
-    getRegisterForm(req, res) {
-        return res.render('users/register');
-    }
-    getLoginForm(req, res) {
-        return res.render('users/login');
-    }
-    logout(req, res) {
-        req.logout();
-        return res.redirect('/');
+    getCreateArticle(req, res) {
+        // if (!req.isAuthenticated()) {
+        //     res.status(401)
+        //         .redirect('/unauthorized');
+        // }
+
+        return res.status(200)
+            .render('articles/create');
     }
 
-    register(req, res) {
-        const bodyUser = req.body;
-
-        this.data.users.findByUsername(bodyUser.username)
-            .then((dbUser) => {
-                if (dbUser) {
-                    throw new Error('User already exists');
-                }
-
-                return this.data.users.create(bodyUser, (err, result) => {
-                    console.log(result);
+    getActiveArticles(req, res) {
+        return this.data.articles.getArticles(5)
+            .then((items) => {
+                return res.render('articles/active', {
+                    articles: items,
                 });
-            })
-            .then((dbUser) => {
-                return res.redirect('/users/login');
+            });
+    }
+
+    getArticle(req, res) {
+        this.data.articles.findById(req.params.id, (err, article) => {
+            res.render('article', {
+                article: article,
+            });
+        });
+    }
+
+    createAnArticle(req, res) {
+        const bodyArticle = req.body;
+
+        // if (bodyArticle) {
+        //     throw new Error('User already exists');
+        // }
+        console.log(bodyArticle);
+        return this.data.articles.create(bodyArticle, (err, result) => {
+            console.log(result);
+        })
+            .then((done) => {
+                return res.redirect('/');
             })
             .catch((err) => {
                 throw new Error(`Error occurred: ${err}`);
             });
+    }
+
+    searchInArticles(req, res) {
+        const bodyUser = req.body;
+
+        // to be implemented
     }
 }
 

@@ -4,13 +4,16 @@ class AuthController {
     }
 
     getRegisterForm(req, res) {
-        return res.render('users/register');
+        return res.status(200)
+            .render('users/register');
     }
     getLoginForm(req, res) {
-        return res.render('users/login');
+        return res.status(200)
+            .render('users/login');
     }
     logout(req, res) {
-        req.logout();
+        req.status(200)
+            .logout();
         return res.redirect('/');
     }
 
@@ -20,11 +23,13 @@ class AuthController {
         this.data.users.findByUsername(bodyUser.username)
             .then((dbUser) => {
                 if (dbUser) {
-                    throw new Error('User already exists');
+                    // throw new Error('User already exists');
+                    res.render('users/register');
                 }
 
                 return this.data.users.create(bodyUser, (err, result) => {
                     console.log(result);
+                    console.log(err);
                 });
             })
             .then((dbUser) => {

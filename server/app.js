@@ -5,9 +5,15 @@ const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+
+const config = require('../config/config');
 
 const init = (data) => {
     const app = express();
+
+    const server = require('http').createServer(express); // !
+    const io = require('socket.io').listen(server); // !
 
     app.set('view engine', 'pug');
     app.set('views', path.join(__dirname, './views/'));
@@ -20,18 +26,15 @@ const init = (data) => {
     app.use(bodyParser.urlencoded({ extended: true }));
 
     app.use(cookieParser());
-    app.use(session({ secret: "TeamFreedom Secretirino Yo", saveUninitialized: true, resave: true })); // !
+    app.use(session({ secret: config.passport.secret, saveUninitialized: true, resave: true })); // !
 
     require('./config/passport').applyTo(app, data);
 
-    // app.use(require('connect-flash')());
-    // app.use((req, res, next) => {
-    //     res.locals.messages = require('express-messages')(req, res);
-    //     next();
-    // });
+    require('./config/socket.io').applyTo(io, data);
 
     require('./routers/routers').attachTo(app, data);
 
+    app.use(flash());
     return Promise.resolve(app);
 };
 

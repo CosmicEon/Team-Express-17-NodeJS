@@ -8,7 +8,7 @@ const config = {
         url: process.env.MONGO_DB_URI || 'mongodb://localhost/forum',
     },
     passport: {
-        secret: 'hidden key',
+        secret: 'NodeJS Secret Key',
     },
 };
 

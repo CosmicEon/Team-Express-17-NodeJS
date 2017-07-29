@@ -9,6 +9,7 @@ class UsersData {
     }
 
     create(model) {
+        console.log(this.validator);
         if (!this._isModelValid(model)) {
             return Promise.reject('Validation failed!');
         }
@@ -36,7 +37,7 @@ class UsersData {
             .then(([user]) => user);
     }
 
-    checkPassword(username, password) {
+    checkUser(username, password) {
         return this.findByUsername(username)
             .then((user) => {
                 if (!user) {

@@ -3,14 +3,14 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const MongoStore = require('connect-mongo')(session);
 
-const config = require('./config');
+const config = require('../../config/config');
 
 const applyTo = (app, data) => {
     app.use(passport.initialize());
     app.use(passport.session());
 
     passport.use(new LocalStrategy((username, password, done) => {
-        data.users.checkPassword(username, password)
+        data.users.checkUser(username, password)
             .then(() => {
                 return data.users.findByUsername(username);
             })
@@ -45,6 +45,7 @@ const applyTo = (app, data) => {
         if (req.isAuthenticated()) {
             return next();
         }
+
         res.redirect('/login' + res._id);
     };
 

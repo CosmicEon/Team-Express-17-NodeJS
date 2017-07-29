@@ -1,4 +1,16 @@
 extends ../_shared/_main.pug
 
 block centerContent
-    
+    .col-sm-8.col-md-8.text-center
+        h2 Last active topics
+        each article in articles
+            .row
+                .col-sm-12.col-md-12
+                    .thumbnail
+                        .caption
+                            h3= article.title
+                            p= article.body
+                            p= article._id
+                            
+                            p
+                                a.btn.btn-primary(href='#', role='button') Coment

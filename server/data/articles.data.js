@@ -18,15 +18,13 @@ class Articles {
             });
     }
 
-    filterBy(props) {
-        return this.collection.find(props)
-            .toArray();
-    }
-
-    getAll() {
+    getArticles(num) {
         return this.collection.find()
+            .sort({ _id: 1 })
+            .limit(num)
             .toArray()
             .then((models) => {
+                console.log(models);
                 if (this.ModelClass.toViewModel) {
                     return models.map(
                         (model) => this.ModelClass.toViewModel(model)
@@ -37,31 +35,16 @@ class Articles {
             });
     }
 
-
-    findById(id) {
-        return this.collection.findOne({
-            _id: new ObjectID(id),
-        });
-    }
-
-    findOrCreateBy(props) {
-        return this.filterBy(props)
-            .then(([model]) => {
-                if (!model) {
-                    model = {};
-                    return this.collection.insert(model)
-                        .then(() => {
-                            return model;
-                        });
-                }
-
-                return model;
+    getAllArticles() {
+        return this.collection.find()
+            .then((data) => {
+                return data;
             });
     }
 
     _isModelValid(model) {
-        if ('undefined' === typeof this.validator ||
-            'function' !== typeof this.validator.isValid) {
+        if ('undefined' === typeof this.ObjectID ||
+            'function' !== typeof this.ObjectID.isValid) {
             return true;
         }
 

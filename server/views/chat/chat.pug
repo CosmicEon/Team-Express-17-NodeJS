@@ -1,0 +1,14 @@
+extends _shared/_main.pug
+
+block centerContent
+    .col-md-6.offset-md-3.col-sm-12
+        h1.text-center MongoChat
+            button#clear.btn.btn-danger Clear
+        #status
+        #chat
+            input#username.form-control(type='text', placeholder='Enter name...')
+            br
+            .card
+                #messages.card-block
+            br
+            textarea#textarea.form-control(placeholder='Enter message...')
