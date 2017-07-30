@@ -16,10 +16,10 @@ class Articles {
             });
     }
 
-    getArticles(num) {
+    getArticles(max) {
         return this.collection.find()
             .sort({ _id: 1 })
-            .limit(num)
+            .limit(max)
             .toArray()
             .then((models) => {
                 console.log(models);
@@ -35,8 +35,24 @@ class Articles {
 
     getAllArticles() {
         return this.collection.find()
+            .toArray()
             .then((data) => {
                 return data;
+            });
+    }
+
+    searchForArticles(name) {
+        return this.collection.find({ title: name })
+            .toArray()
+            .then((models) => {
+                console.log(models);
+                if (this.ModelClass.toViewModel) {
+                    return models.map(
+                        (model) => this.ModelClass.toViewModel(model)
+                    );
+                }
+
+                return models;
             });
     }
 

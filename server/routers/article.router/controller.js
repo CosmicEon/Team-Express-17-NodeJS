@@ -3,14 +3,39 @@ class ArticleController {
         this.data = data;
     }
 
-    getCreateArticle(req, res) {
-        // if (!req.isAuthenticated()) {
-        //     res.status(401)
-        //         .redirect('/unauthorized');
-        // }
-
+    getCreateForm(req, res) {
         return res.status(200)
             .render('articles/create');
+    }
+
+    createAnArticle(req, res) {
+        const bodyArticle = req.body;
+
+        return this.data.articles.create(bodyArticle, (err, result) => {
+            console.log(result);
+        })
+            .then((done) => {
+                return res.redirect('/');
+            })
+            .catch((err) => {
+                throw new Error(`Error occurred: ${err}`);
+            });
+    }
+
+    getSearchForm(req, res) {
+        return res.status(200)
+            .render('articles/search');
+    }
+
+    searchInArticles(req, res) {
+        const searchedItem = req.body;
+        console.log(searchedItem);
+        return this.data.articles.searchForArticles(searchedItem)
+            .then((items) => {
+                return res.render('articles/result', {
+                    articles: items,
+                });
+            });
     }
 
     getActiveArticles(req, res) {
@@ -28,30 +53,6 @@ class ArticleController {
                 article: article,
             });
         });
-    }
-
-    createAnArticle(req, res) {
-        const bodyArticle = req.body;
-
-        // if (bodyArticle) {
-        //     throw new Error('User already exists');
-        // }
-        console.log(bodyArticle);
-        return this.data.articles.create(bodyArticle, (err, result) => {
-            console.log(result);
-        })
-            .then((done) => {
-                return res.redirect('/');
-            })
-            .catch((err) => {
-                throw new Error(`Error occurred: ${err}`);
-            });
-    }
-
-    searchInArticles(req, res) {
-        const bodyUser = req.body;
-
-        // to be implemented
     }
 }
 

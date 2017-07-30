@@ -9,14 +9,11 @@ const attachTo = (app, data) => {
         .get('/register', (req, res) => {
             return controller.getRegisterForm(req, res);
         })
-        .get('/login', (req, res) => {
-            return controller.getLoginForm(req, res);
-        })
-        .post('/logout', (req, res) => {
-            return controller.logout(req, res);
-        })
         .post('/register', (req, res) => {
             return controller.register(req, res);
+        })
+        .get('/login', (req, res) => {
+            return controller.getLoginForm(req, res);
         })
         .post('/login', (req, res, next) => {
             passport.authenticate('local', {
@@ -24,6 +21,9 @@ const attachTo = (app, data) => {
                 failureRedirect: '/users/login',
                 failureFlash: true,
             });
+        })
+        .post('/logout', (req, res) => {
+            return controller.logout(req, res);
         });
 
     app.use('/users', router);

@@ -1,9 +1,9 @@
 extends ../_shared/_main.pug
 
 block centerContent
+    h2 Search
     .row
-        .col-lg-6
-            .input-group
-                input.form-control(type='text', placeholder='Search for...')
-                span.input-group-btn
-                    button.btn.btn-default(type='button') Go!
+        form(action='/articles/search', method='POST')
+            .form-group
+                input.form-control(type='text', name='title', aria-describedby='emailHelp', placeholder='Search for...')
+            button.btn.btn-default(type='submit', value='submit') Go!

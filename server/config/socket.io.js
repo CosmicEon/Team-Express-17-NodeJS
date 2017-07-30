@@ -7,6 +7,7 @@ const applyTo = (io, data) => {
         const chat = data.sockets.initCollection();
 
         // Create function to send status
+        // eslint-disable-next-line
         sendStatus = (s) => {
             socket.emit('status', s);
         };

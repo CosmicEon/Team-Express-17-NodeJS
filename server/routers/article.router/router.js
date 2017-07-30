@@ -6,10 +6,13 @@ const attachTo = (app, data) => {
 
     router
         .get('/create', (req, res) => {
-            return controller.getCreateArticle(req, res);
+            return controller.getCreateForm(req, res);
         })
         .post('/create', (req, res) => {
             return controller.createAnArticle(req, res);
+        })
+        .get('/search', (req, res) => {
+            return controller.getSearchForm(req, res);
         })
         .post('/search', (req, res) => {
             return controller.searchInArticles(req, res);

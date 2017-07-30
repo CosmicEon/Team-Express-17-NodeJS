@@ -10,6 +10,9 @@ const config = {
     passport: {
         secret: 'NodeJS Secret Key',
     },
+    socketIO: {
+        port: 80, // default port for Socket.io
+    },
 };
 
 module.exports = config;

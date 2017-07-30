@@ -7,15 +7,6 @@ class AuthController {
         return res.status(200)
             .render('users/register');
     }
-    getLoginForm(req, res) {
-        return res.status(200)
-            .render('users/login');
-    }
-    logout(req, res) {
-        req.status(200)
-            .logout();
-        return res.redirect('/');
-    }
 
     register(req, res) {
         const bodyUser = req.body;
@@ -38,6 +29,17 @@ class AuthController {
             .catch((err) => {
                 throw new Error(`Error occurred: ${err}`);
             });
+    }
+
+    getLoginForm(req, res) {
+        return res.status(200)
+            .render('users/login');
+    }
+
+    logout(req, res) {
+        req.status(200)
+            .logout();
+        return res.redirect('/');
     }
 }
 
