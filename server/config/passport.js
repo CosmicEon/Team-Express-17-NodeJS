@@ -22,14 +22,6 @@ const applyTo = (app, data) => {
             });
     }));
 
-    // app.use(session({
-    //     store: new MongoStore({ url: config.mongo.url }),
-    //     secret: config.passport.secret,
-    //     saveUninitialized: true,
-    //     resave: true,
-    // }));
-
-
     passport.serializeUser((user, done) => {
         done(null, user._id);
     });

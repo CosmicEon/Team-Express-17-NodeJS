@@ -62,15 +62,32 @@ html(lang="en")
 
                     //- right
                     .col-sm-2.col-md-2.text-center
+                        .row
+                            h1.text-center Simple Chat
+                        .row
+                            #chat
+                                input#username.form-control(type='text', placeholder='Enter name...')
+                                br
+                                .card
+                                    #messages.card-block
+                                br
+                                textarea#textarea.form-control(placeholder='Enter message...')
+                            #status
+                        .row
+                            button#send.btn.btn-success Send
+                            button#clear.btn.btn-danger Clear
                         aside
                             h2 Ads
-                        a.btn.btn-primary(href='/chat', role='button') Chat
         //- footer
         block footer
 
         script(src='https://code.jquery.com/jquery-1.10.2.min.js')
         //- script(type="text/javascript", src='/static/lib/socket.io/index.js')
-        //- script.
-        //-     var socket = io();
         script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
+        //- script.
+        //-     var socket = io('http://localhost');
+        //-     socket.on('news', function (data) {
+        //-     console.log(data);
+        //-     socket.emit('my other event', { my: 'data' });
+        //-     });
         script(type="text/javascript", src="/static/js/main.js")

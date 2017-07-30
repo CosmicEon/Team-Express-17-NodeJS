@@ -1,13 +1,18 @@
-const applyTo = (app, data) => {
+/* globals sendStatus */
+
+const applyTo = (io, data) => {
+    console.log('MongoDB connected...');
     // Connect to Socket.io
-    app.on('connection', function (socket) {
+    io.on('connection', (socket) => {
+        const chat = data.sockets.initCollection();
+
         // Create function to send status
-        sendStatus = function (s) {
+        sendStatus = (s) => {
             socket.emit('status', s);
         };
 
         // Get chats from mongo collection
-        data.find().limit(100).sort({ _id: 1 }).toArray(function (err, res) {
+        chat.find().limit(20).sort({ _id: 1 }).toArray((err, res) => {
             if (err) {
                 throw err;
             }
@@ -17,9 +22,9 @@ const applyTo = (app, data) => {
         });
 
         // Handle input events
-        socket.on('input', function (inputData) {
-            const name = data.name;
-            const message = data.message;
+        socket.on('input', (input) => {
+            const name = input.name;
+            const message = input.message;
 
             // Check for name and message
             if (name === '' || message === '') {
@@ -27,8 +32,8 @@ const applyTo = (app, data) => {
                 sendStatus('Please enter a name and message');
             } else {
                 // Insert message
-                data.insert({ name: name, message: message }, function () {
-                    app.emit('output', [data]);
+                chat.insert({ name: name, message: message }, () => {
+                    io.emit('output', [input]);
 
                     // Send status object
                     sendStatus({
@@ -40,9 +45,9 @@ const applyTo = (app, data) => {
         });
 
         // Handle clear
-        socket.on('clear', function (inputData) {
+        socket.on('clear', (input) => {
             // Remove all chats from collection
-            data.remove({}, function () {
+            chat.remove({}, () => {
                 // Emit cleared
                 socket.emit('cleared');
             });

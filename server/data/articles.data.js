@@ -1,5 +1,3 @@
-const { ObjectID } = require('mongodb');
-
 class Articles {
     constructor(db, ModelClass) {
         this.db = db;
