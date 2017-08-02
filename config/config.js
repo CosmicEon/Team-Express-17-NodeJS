@@ -1,17 +1,15 @@
-/* globals process */
-
 const config = {
     server: {
-        port: process.env.PORT || 8080,
+        port: 80,
     },
     mongo: {
-        url: process.env.MONGO_DB_URI || 'mongodb://localhost/forum',
+        url: 'mongodb://localhost/forum',
     },
     passport: {
         secret: 'NodeJS Secret Key',
     },
     socketIO: {
-        port: 80, // default port for Socket.io
+        port: 8080, // default port for Socket.io
     },
 };
 

@@ -13,10 +13,12 @@ const config = require('../config/config');
 const init = (data) => {
     const app = express();
 
-    // Load Socket.io
+    // Load Socket.IO
     const server = require('http').createServer(app); // !
     const io = require('socket.io')(server); // !
-    server.listen(config.socketIO.port);
+    server.listen(config.socketIO.port, () => {
+        console.log(`Socket.IO started on port :${config.socketIO.port}`);
+    });
 
     // Load View Engine
     app.set('view engine', 'pug');

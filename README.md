@@ -5,9 +5,9 @@
 ## Team Members
 * KraitynDeWas - Красен Илков - ([Link to Telerik Academy](https://telerikacademy.com/Users/KraitynDeWas))
 
-* **Didn't participate** ~~evilshadow - Красимир Георгиев - ([Link to Telerik Academy](https://telerikacademy.com/Users/evilshadow))~~
+* **Didn't participate** ~~evilshadow - Красимир Георгиев~~
 
-* **Didn't participate** ~~Teodor_Peev - Теодор Пеев - ([Link to Telerik Academy](https://telerikacademy.com/Users/Teodor_Peev))~~
+* **Didn't participate** ~~Teodor_Peev - Теодор Пеев~~
 
 ## Forum Application [Repository](https://github.com/CosmicEon/Team-Express-17-NodeJS)
 ---

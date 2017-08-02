@@ -30,7 +30,7 @@
     };
 
     // Connect to socket.io
-    const socket = io.connect('localhost:80');
+    const socket = io.connect('localhost:8080');
 
     // Check for connection
     if (socket !== undefined) {
