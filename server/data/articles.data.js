@@ -18,7 +18,7 @@ class Articles {
 
     getArticles(max) {
         return this.collection.find()
-            .sort({ _id: 1 })
+            .sort({ _id: -1 }) // -1 for reverse
             .limit(max)
             .toArray()
             .then((models) => {
