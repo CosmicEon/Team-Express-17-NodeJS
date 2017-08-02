@@ -22,7 +22,6 @@ class Articles {
             .limit(max)
             .toArray()
             .then((models) => {
-                console.log(models);
                 if (this.ModelClass.toViewModel) {
                     return models.map(
                         (model) => this.ModelClass.toViewModel(model)
@@ -45,7 +44,6 @@ class Articles {
         return this.collection.find({ title: name })
             .toArray()
             .then((models) => {
-                console.log(models);
                 if (this.ModelClass.toViewModel) {
                     return models.map(
                         (model) => this.ModelClass.toViewModel(model)
