@@ -15,13 +15,11 @@ const attachTo = (app, data) => {
         .get('/login', (req, res) => {
             return controller.getLoginForm(req, res);
         })
-        .post('/login', (req, res, next) => {
-            passport.authenticate('local', {
-                successRedirect: '/',
-                failureRedirect: '/users/login',
-                failureFlash: true,
-            });
-        })
+        .post('/login', passport.authenticate('local', {
+            successRedirect: '/',
+            failureRedirect: '/users/login',
+            failureFlash: true,
+        }))
         .post('/logout', (req, res) => {
             return controller.logout(req, res);
         });

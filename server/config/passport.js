@@ -7,6 +7,7 @@ const config = require('../../config/config');
 
 const applyTo = (app, data) => {
     passport.use(new LocalStrategy((username, password, done) => {
+        console.log(username + "|" + password);
         data.users.checkUser(username, password)
             .then(() => {
                 return data.users.findByUsername(username);

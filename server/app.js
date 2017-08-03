@@ -2,16 +2,19 @@
 
 const express = require('express');
 const path = require('path');
-const session = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
-const MongoStore = require('connect-mongo')(session);
+const morgan = require('morgan');
 
 const config = require('../config/config');
 
 const init = (data) => {
     const app = express();
+
+    // Load Morgan -> HTTP request logger
+    app.use(morgan('combined'));
+
 
     // Load Socket.IO
     const server = require('http').createServer(app); // !
@@ -34,8 +37,8 @@ const init = (data) => {
 
     app.use(flash());
 
-    require('./config/passport').applyTo(app, data);
     require('./config/socket.io').applyTo(io, data);
+    require('./config/passport').applyTo(app, data);
 
     require('./routers/routers').attachTo(app, data);
 
