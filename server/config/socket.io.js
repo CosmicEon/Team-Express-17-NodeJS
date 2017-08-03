@@ -1,7 +1,6 @@
 /* globals sendStatus */
 
 const applyTo = (io, data) => {
-    console.log('MongoDB connected...');
     // Connect to Socket.io
     io.on('connection', (socket) => {
         const chat = data.sockets.initCollection();

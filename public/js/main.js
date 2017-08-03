@@ -38,7 +38,6 @@
 
         // Handle Output
         socket.on('output', (data) => {
-            // console.log(data);
             if (data.length) {
                 for (let x = 0; x < data.length; x++) {
                     // Build out message div

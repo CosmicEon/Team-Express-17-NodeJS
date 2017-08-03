@@ -9,7 +9,6 @@ class UsersData {
     }
 
     create(model) {
-        console.log(this.validator);
         if (!this._isModelValid(model)) {
             return Promise.reject('Validation failed!');
         }

@@ -19,7 +19,6 @@ class AuthController {
                 }
 
                 return this.data.users.create(bodyUser, (err, result) => {
-                    console.log(result);
                     console.log(err);
                 });
             })

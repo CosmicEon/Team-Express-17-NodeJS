@@ -15,7 +15,6 @@ const init = (data) => {
     // Load Morgan -> HTTP request logger
     app.use(morgan('combined'));
 
-
     // Load Socket.IO
     const server = require('http').createServer(app); // !
     const io = require('socket.io')(server); // !
@@ -29,7 +28,7 @@ const init = (data) => {
 
     // Load Static Content
     app.use(express.static(path.join(__dirname, '../../public/')));
-    app.use('/static', express.static('public'));
+    app.use('/public', express.static('public'));
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));

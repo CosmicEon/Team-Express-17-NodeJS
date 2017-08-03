@@ -12,7 +12,6 @@ class ArticleController {
         const bodyArticle = req.body;
 
         return this.data.articles.create(bodyArticle, (err, result) => {
-            console.log(result);
         })
             .then((done) => {
                 return res.redirect('/');
@@ -29,7 +28,6 @@ class ArticleController {
 
     searchInArticles(req, res) {
         const searchedItem = req.body;
-        console.log(searchedItem);
         return this.data.articles.searchForArticles(searchedItem)
             .then((items) => {
                 return res.render('articles/result', {
