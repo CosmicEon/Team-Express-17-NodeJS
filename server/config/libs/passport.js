@@ -3,7 +3,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const MongoStore = require('connect-mongo')(session);
 
-const config = require('../../config/config');
+const config = require('../constants');
 
 const applyTo = (app, data) => {
     passport.use(new LocalStrategy((username, password, done) => {

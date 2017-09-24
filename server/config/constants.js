@@ -1,6 +1,6 @@
 const config = {
     server: {
-        port: 80,
+        port: 8008,
     },
     mongo: {
         url: 'mongodb://localhost/forum',
@@ -9,7 +9,7 @@ const config = {
         secret: 'NodeJS Secret Key',
     },
     socketIO: {
-        port: 8080, // default port for Socket.io
+        port: 8080, // default port for Socket.io?
     },
 };
 

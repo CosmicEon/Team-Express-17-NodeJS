@@ -6,16 +6,13 @@
 // });
 
 (function init() {
-    const element = (id) => {
-        return document.getElementById(id);
-    };
     // Get Elements
-    const status = element('status');
-    const messages = element('messages');
-    const textarea = element('textarea');
-    const username = element('username');
-    const clearBtn = element('clear');
-    const sendBtn = element('send');
+    const status = document.getElementById('status');
+    const messages = document.getElementById('messages');
+    const textarea = document.getElementById('textarea');
+    const username = document.getElementById('username');
+    const clearBtn = document.getElementById('clear');
+    const sendBtn = document.getElementById('send');
 
     // Set default status
     const statusDefault = status.textContent;
@@ -76,8 +73,6 @@
                 name: username.value,
                 message: textarea.value,
             });
-
-            event.focus();
         });
 
         // Handle Chat Clear
