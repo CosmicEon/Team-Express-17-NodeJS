@@ -3,7 +3,7 @@ const config = {
         port: 8008,
     },
     mongo: {
-        url: 'mongodb://localhost/forum',
+        url: 'mongodb://testuser:test1234@ds237475.mlab.com:37475/forum', // 'mongodb://localhost/forum'
     },
     passport: {
         secret: 'NodeJS Secret Key',
