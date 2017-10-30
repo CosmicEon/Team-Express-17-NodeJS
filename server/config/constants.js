@@ -9,7 +9,7 @@ const config = {
         secret: 'NodeJS Secret Key',
     },
     socketIO: {
-        port: process.env.PORT || 8080, // default port for Socket.io?
+        port: 8080, // default port for Socket.io?
     },
 };
 
