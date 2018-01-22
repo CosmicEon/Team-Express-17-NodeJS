@@ -6,7 +6,7 @@ const asyncServerBoot = () => {
 };
 
 asyncServerBoot()
-    .then(() => require('./db/db').init(config.mongo.url))
+    .then(() => require('./server/config/db').init(config.mongo.url))
     .then((db) => require('./server/data/data').init(db))
     .then((data) => require('./server/app').init(data))
     .then((app) => {
