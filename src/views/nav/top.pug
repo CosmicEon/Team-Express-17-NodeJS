@@ -1,0 +1,11 @@
+ul.nav.navbar-nav.navbar-right
+  if users
+    li
+      a(href='/profile') Profile
+    li
+      a(href='/users/logout') Logout
+  else
+    li
+      a(href='/users/register') Register
+    li
+      a(href='/users/login') Login

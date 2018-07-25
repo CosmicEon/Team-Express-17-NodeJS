@@ -1,9 +1,0 @@
-extends ../_shared/_main.pug
-
-block centerContent
-    .col-sm-8.col-md-8.text-center
-        h1 #{title}
-        ul.list-group
-            each article in articles
-                li.list-group-item
-                    a(href='/article/'+article._id)= article.title

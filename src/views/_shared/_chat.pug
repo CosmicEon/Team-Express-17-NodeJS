@@ -1,0 +1,16 @@
+.row
+  h1.text-center Simple Chat
+.row
+  .col-sm-12.col-md-12
+    #chat
+      input#username.form-control(type='text', placeholder='Enter name...')
+      br
+      .card
+        #messages.card-block
+      br
+      textarea#textarea.form-control(placeholder='Enter message...')
+    #status
+.row
+  .col-sm-12.col-md-12
+    button#send.btn.btn-success Send
+    button#clear.btn.btn-danger Clear

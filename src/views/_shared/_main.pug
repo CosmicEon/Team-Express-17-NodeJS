@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+html(lang="en")
+
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Forum
+    link(rel="stylesheet", href="/public/lib/bootstrap/bootstrap.min.css")
+    link(rel="stylesheet", href="/public/css/main.css")
+
+    block styles
+
+    script(type="text/javascript", src="/public/lib/jquery/jquery.min.js")
+    script(type="text/javascript", src="/public/lib/bootstrap/bootstrap.min.js")
+
+    block scripts
+
+  body
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') Home
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/articles/search') Discover Topics
+            li
+              a(href='/articles/active') Active Topics
+            li
+              a(href='/articles/create') Create Article
+          //- nav top
+          include ../nav/top.pug
+
+    //- main
+    block main
+      main.container-fluid
+        .row
+          .page-header
+            h1.text-center Small Forum
+              small general discussions
+          .container
+            //- != messages('_message', locals)
+            //- if errors
+            //-     each error, i in errors
+            //-         div(class="alert alert-danger") #{error.msg}
+        .row
+          //- left
+          .col-sm-2.col-md-2.text-center
+            .row
+              include ../nav/left.pug
+
+          //- center
+          .col-sm-7.col-md-7.text-center
+
+            block centerContent
+
+            block results
+
+          //- right
+          .col-sm-3.col-md-3.text-center
+
+            include _chat.pug
+
+            aside
+              .col-sm-12.col-md-12
+                h2 Ads
+
+    //- footer
+    include _footer.pug
+
+    script(src='https://code.jquery.com/jquery-1.10.2.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
+
+    script(type="text/javascript", src="/public/js/main.js")

@@ -1,0 +1,12 @@
+extends ../_shared/_main.pug
+
+block centerContent
+  h2 Create Article
+  form(action='/articles/create', method='POST')
+    .form-group
+      label(for='addTitle') Title
+      input#addTitle.form-control(type='text', name='title', aria-describedby='emailHelp', placeholder='Enter title')
+    .form-group
+      label(for='articleBody') Text
+      textarea#articleBody.form-control(name='body', rows='3')
+    button.btn.btn-primary(type='submit', value='submit') Submit
